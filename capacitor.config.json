@@ -1,0 +1,33 @@
+{
+  "appId": "com.koziapp.webapp",
+  "appName": "SideQuest",
+  "webDir": "www",
+  "backgroundColor": "#ffffff",
+  
+  "server": {
+    "allowNavigation": [
+      "www.side-quest.site",
+      "side-quest.site",
+      "*"
+    ]
+  },
+  "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "backgroundColor": "#ffffffff",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+  "plugins": {
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  },
+  "packageClassList": [
+    "PushNotificationsPlugin",
+    "CAPCameraPlugin",
+    "FirebaseMessagingPlugin"
+  ]
+
+}

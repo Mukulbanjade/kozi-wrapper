@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideQuest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; background-color: #ffffff; font-family: 'Montserrat', sans-serif;">
+
+    <div id="offline-ui" style="display: none; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+        
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 style="font-size: 90px; font-weight: 900; color: #000000; margin: 0; letter-spacing: -4px; line-height: 1;">SQ</h1>
+            <h2 style="font-size: 16px; font-weight: 700; color: #000000; margin: 0; letter-spacing: 3px; text-transform: uppercase;">Side Quest</h2>
+        </div>
+
+        <h3 style="font-size: 22px; font-weight: 700; color: #000000; margin-bottom: 12px; text-align: center;">Connection Lost.</h3>
+        <p style="font-size: 14px; font-weight: 400; color: #666666; max-width: 280px; text-align: center; margin-bottom: 40px; line-height: 1.6;">
+            The campus Wi-Fi let you down. Get back online to resume your missions.
+        </p>
+
+        <button onclick="window.location.reload()" style="background-color: #000000; color: #ffffff; border: none; padding: 16px 36px; font-size: 13px; font-weight: 700; border-radius: 50px; cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px;">
+            RETRY CONNECTION
+        </button>
+    </div>
+    <script>
+        // Check internet instantly
+        if (navigator.onLine) {
+            // No delay, go straight to the campus app
+            window.location.replace("https://www.side-quest.site/");
+        } else {
+            // If offline, wait half a second to be sure, then show the SQ UI
+            setTimeout(() => {
+                document.getElementById('offline-ui').style.display = 'flex';
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
