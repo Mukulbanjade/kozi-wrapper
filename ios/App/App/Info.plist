@@ -24,8 +24,14 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Side Quest requires camera access so you can take and upload photos directly in the app.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Side Quest requires microphone access so you can record and send voice messages to other users.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Side Quest requires access to your photo library so you can upload profile pictures, attach images to tasks, and add photos to your comments.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Side Quest requires permission to save photos to your library when you capture images in the app.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -55,5 +61,7 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

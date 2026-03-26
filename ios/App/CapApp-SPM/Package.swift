@@ -14,8 +14,8 @@ let package = Package(
         .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", exact: "8.1.0"),
         .package(name: "CapacitorFirebaseMessaging", path: "../../../node_modules/@capacitor-firebase/messaging"),
         .package(name: "CapacitorCamera", path: "../../../node_modules/@capacitor/camera"),
-        .package(name: "CapacitorPushNotifications", path: "../../../node_modules/@capacitor/push-notifications"),
-        .package(name: "CapacitorSplashScreen", path: "../../../node_modules/@capacitor/splash-screen")
+        .package(name: "CapacitorSplashScreen", path: "../../../node_modules/@capacitor/splash-screen"),
+        .package(name: "IndependoCapacitorVoiceRecorder", path: "../../../node_modules/@independo/capacitor-voice-recorder")
     ],
     targets: [
         .target(
@@ -25,8 +25,8 @@ let package = Package(
                 .product(name: "Cordova", package: "capacitor-swift-pm"),
                 .product(name: "CapacitorFirebaseMessaging", package: "CapacitorFirebaseMessaging"),
                 .product(name: "CapacitorCamera", package: "CapacitorCamera"),
-                .product(name: "CapacitorPushNotifications", package: "CapacitorPushNotifications"),
-                .product(name: "CapacitorSplashScreen", package: "CapacitorSplashScreen")
+                .product(name: "CapacitorSplashScreen", package: "CapacitorSplashScreen"),
+                .product(name: "IndependoCapacitorVoiceRecorder", package: "IndependoCapacitorVoiceRecorder")
             ]
         )
     ]

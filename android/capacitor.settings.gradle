@@ -8,8 +8,8 @@ project(':capacitor-firebase-messaging').projectDir = new File('../node_modules/
 include ':capacitor-camera'
 project(':capacitor-camera').projectDir = new File('../node_modules/@capacitor/camera/android')
 
-include ':capacitor-push-notifications'
-project(':capacitor-push-notifications').projectDir = new File('../node_modules/@capacitor/push-notifications/android')
-
 include ':capacitor-splash-screen'
 project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capacitor/splash-screen/android')
+
+include ':independo-capacitor-voice-recorder'
+project(':independo-capacitor-voice-recorder').projectDir = new File('../node_modules/@independo/capacitor-voice-recorder/android')

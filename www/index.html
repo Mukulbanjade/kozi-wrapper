@@ -25,16 +25,28 @@
         </button>
     </div>
     <script>
-        // Check internet instantly
-        if (navigator.onLine) {
-            // No delay, go straight to the campus app
-            window.location.replace("https://www.side-quest.site/");
-        } else {
-            // If offline, wait half a second to be sure, then show the SQ UI
-            setTimeout(() => {
-                document.getElementById('offline-ui').style.display = 'flex';
-            }, 500);
+        const TARGET = "https://www.side-quest.site/";
+
+        function showOffline() {
+            document.getElementById('offline-ui').style.display = 'flex';
         }
+
+        // navigator.onLine is unreliable in WebViews — it only checks network
+        // connectivity, not actual internet access. Use a real fetch probe instead.
+        // AbortSignal.timeout() is not available on iOS 15.0–15.3, so use a
+        // manual AbortController + setTimeout for broader compatibility.
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 5000);
+
+        fetch("https://www.side-quest.site/", { method: 'HEAD', cache: 'no-store', signal: controller.signal })
+            .then(() => {
+                clearTimeout(timer);
+                window.location.replace(TARGET);
+            })
+            .catch(() => {
+                clearTimeout(timer);
+                showOffline();
+            });
     </script>
 
 </body>

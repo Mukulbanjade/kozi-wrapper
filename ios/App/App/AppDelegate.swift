@@ -1,5 +1,6 @@
 import UIKit
 import Capacitor
+import FirebaseCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,9 +8,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        self.window?.backgroundColor = UIColor.white
+        // Must be called before any other Firebase SDK usage.
+        // Reads GoogleService-Info.plist and initialises Firebase on iOS.
+        FirebaseApp.configure()
         return true
+    }
+
+    // Called after the window and Capacitor bridge are fully initialised.
+    // By the time the splash screen finishes its 3.5 s hold and fades out,
+    // this has already run — so the WKWebView shows white instead of black
+    // while the remote page is still loading in the background.
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        guard
+            let bridgeVC = window?.rootViewController as? CAPBridgeViewController,
+            let webView = bridgeVC.bridge?.webView
+        else { return }
+
+        webView.isOpaque = false
+        webView.backgroundColor = .white
+        webView.scrollView.backgroundColor = .white
+
+        // Disable long-press text selection across the entire WebView
+        if #available(iOS 14.5, *) {
+            webView.configuration.preferences.isTextInteractionEnabled = false
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -24,10 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

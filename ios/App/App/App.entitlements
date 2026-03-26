@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>aps-environment</key>
-	<string>development</string>
+	<string>production</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:www.side-quest.site?mode=developer</string>
-		<string>applinks:side-quest.site?mode=developer</string>
+		<string>applinks:www.side-quest.site</string>
+		<string>applinks:side-quest.site</string>
 	</array>
 </dict>
 </plist>
